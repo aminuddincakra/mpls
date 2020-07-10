@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body{
+	font-family: 'Open Sans', sans-serif;
+	background: #A9E5D9;
+}
+/*custom scroll bar*/
+body::-webkit-scrollbar{
+	width: 12px !important;
+}
+body::-webkit-scrollbar-track {
+    	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+body::-webkit-scrollbar-thumb{
+	background: linear-gradient(#02CFC8,#e5f1f3) !important;
+	/*border-radius: 6px;*/
+}
+/*end custom scroll bar*/
+.bg-custom{
+	background: #02CFC8 !important;
+	min-height: 65px;
+}
+/*CSS NAVBAR*/
+nav{
+	    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+.font-weight-bold {
+    font-weight: 650!important;
+}
+.side-bar{
+	font-size: 20px;
+    font-weight: 450;
+}
+.user{
+	margin-bottom: 0px !important;
+}
+.dropdown-menu{
+	left: 25% !important;
+}
+/*END CSS NAVBAR*/
+
+/*CSS SOAL HEAD*/
+.d-block{
+	min-height: 110vh !important;
+}
+.soal-head{
+	margin-top: 5%;
+	background: #fff;
+	padding: 17px;
+	font-weight: bold;
+	font-size: 17px;
+	box-shadow: inset 0 0px 5px 0 rgba(0,0,0,0), 0 0px 0px 0 rgba(0,0,0,0);
+}
+.soal{
+	padding: 10px 5px;
+	margin-top: -1% !important;
+}
+.soal-no {
+    background: #A9E5D9;
+    color: #000;
+    font-weight: bold;
+    text-shadow: 3px 0px 3px rgb(255, 251, 251);
+}
+.waktu-mundur{
+	background: #02CFC8;
+	color: #fff;
+	text-shadow: 0 0 3px rgba(0,0,0,1);
+}
+.waktu{
+	background: #A9E5D9;
+    color: #000;
+	/*padding: 10px 15px;*/
+    /*margin-top: -1% !important;*/
+    font-weight: bold;
+    text-shadow: 3px 0px 3px rgb(255, 251, 251);
+}
+/*END CSS SOAL HEAD*/
+
+
+
+
+
+
+
+
+
+.b,.bold {font-weight : bold;}
+.clear {clear : both;}
+p {text-align : justify}
+#header {background : #02CFC8;color : #fff;}
+#header .col-md-12 {height : 99px;}
+#logo {position : absolute;top : 12px;}
+
+#logo img {
+	width : 243px;
+	height : 70px;
+}
+
+#welcome {
+	position : absolute;
+	top : 0;
+	right : 0;
+	width : 243px;
+	height : 100%;
+	background : #333333;
+}
+
+#notif {
+	background : #F4E0DE;
+	width : 100%;
+}
+
+#notif .col-md-12 {
+	height : 30px;
+}
+
+#loginbox {
+	width : 416px;
+	background : #fff;
+	height : 342px;
+	margin : auto;
+	border-radius : 5px;
+}
+
+#loginfooter {
+	border-top : solid 1px #ECECEC;
+	height : 30px;
+}
+
+#loginbody {height : 252px;font-weight : bold; color : #333;}
+#loginbody input[type=text],
+#loginbody input[type=password] { padding : 5px; width : 100%; font-weight : normal;color : #6F6F6F;border-radius : 3px; border : solid 1px #BBB;}
+#loginbody table { width : 90%; margin: auto;}
+#loginbody table td { padding : 10px;}
+input[type=submit] {background : #55A958; color : #fff; border : none; padding : 10px 15px; width : 100%}
+input[type=submit].btn-danger {background : #d9534f; color : #fff; border : none; padding : 10px 15px; width : 100%}
+
+
+
+#logintitle p {
+	font-weight : bold;
+	padding : 18px 20px;
+	font-size : 20px;
+	color : #353535;
+}
+
+#logintitle {
+	height : 60px;
+	background : #F1F1F1;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#welcome {padding-top : 15px;}
+#welcome p  { margin : 0;}
+#avatar { float : left; margin-right : 10px;}
+#avatar img { height : 70px}
+#selamat {padding-top : 2px;}
+
+#loginbox.konfirm  { width : 800px; height : auto; margin-bottom : 30px;}
+#loginbox.konfirm  #loginfooter { height : auto; padding : 10px 30px;}
+#loginbox.konfirm input { width : 150px;}
+#loginbox.konfirm input[type=submit] { float : right;}
+#loginbox.konfirm #loginbody {height : auto;}
+#loginbox .datasiswa {padding : 7px 30px;border-top : solid 1px #ECECEC;}
+#loginbox .datasiswa p.bold {font-weight : bold;}
+#loginbox .datasiswa p {font-weight : normal; margin : 0;}
+
+#loginbox.konfirm.konfirm2  { width : auto; height : auto; margin-bottom : 30px;}
+#loginbox.konfirm.konfirm3 { width : 365px; height : auto; margin-bottom : 30px;}
+#loginbox.konfirm.konfirm3 #loginbody { font-weight : normal; font-size : 14px; padding : 40px 20px;}
+#loginbox.konfirm.konfirm3 #loginfooter {text-align : center; margin-bottom : 20px;}
+#loginbox.konfirm.konfirm3 input[type=submit] {float : none; margin-top : 30px;}
+
+p.warn {color : #333; padding : 15px; font-size : 13px; line-height : 1.7em;}
+
+#soal{background : #fff}
+#soal-head {padding : 17px; font-size : 17px;font-weight : bold;}
+#nomor {float : left;}
+#nomor span {background : #A9E5D9; color:#fff; padding : 5px 0; width : 35px; display : inline-block; text-align : center;}
+#waktu {float : right; background : #A9E5D9; color : #fff;}
+#waktu span {padding : 5px 20px; display : inline-block}
+#waktu span.sisa { background : #A9E5D9; float : right;}
+#waktu span.sisa { background : #A9E5D9; float : right;}
+#waktu span p {float : left; margin : 0;}
+
+#font-size {background : #EAEAEA; font-weight : bold; font-size : 18px; padding : 10px 15px;}
+#font-size span { display : inline-block; margin: 0 10px;}
+#font-size span.a1 { font-size : 10px;}
+#font-size span.a2 { font-size : 14px;}
+#font-size span.a3 { font-size : 18px;}
+
+
+#soal { margin-bottom : 20px;}
+#soal-body {padding : 20px;}
+.soal { border : solid 1px #ccc; padding : 20px; display : none;}
+.soal.active {display : block;}
+.options-group {margin-top : 40px;}
+.options {margin : 20px 0;}
+.options p {position : relative; left : 35px; max-width : 90%}
+/*span.option {position : absolute;}*/
+/*.option {display : inline-block; width : 30px; height:30px; border-radius : 20px; border : solid 2px #888; text-align : center;
+		 margin-right : 10px; cursor : pointer; color : #888; font-size : 12px; position : relative; }
+.option.checked { background : #2F659C;color : #2F659C; border-color : #2F659C}*/
+#soal-foot {padding : 10px 20px; border-top : solid 1px #ccc; }
+#soal-foot .btn {font-size : 12px;}
+
+#summary {background  : #fff; border: solid 20px #ADA7A7; position : fixed; width  : 300px; right : 0; top : 80px; height : 350px; overflow-y:scroll; display : none;}
+#summary .no {float : left; font-size : 16px; font-weight : bold; text-align: center; border : solid 10px #fff; position : relative; cursor : pointer}
+#summary p {margin : 0; border : solid 2px #000; width : 40px;padding : 7px; text-align : center;}
+#summary span { position : absolute; top : -6px; right : -7px; border : solid 2px #000; border-radius : 90px; width : 20px; height : 20px; font-size : 12px; background : #fff;}
+#summary .no.active,
+#summary .no.done.active p,
+#summary .no.ragu-ragu.active.done p {background: #699BCE;color: #000;}
+#summary .no.done p { background : #444; color : #fff;}
+#summary .no.ragu-ragu.done p,
+#summary .no.ragu-ragu {color : #fff; background : #f0ad4e}
+#summary .no.ragu-ragu span {border-color : #f0ad4e; color  :#f0ad4e }
+#summary-button {position : fixed; right : 299px; top: 139px;}
+
+.nomor {display : none;}
+
+            label.coolbox {  
+                border: solid 1px #000;  
+                margin:2px;
+                display:inline-block;
+                width:30px;
+                height:30px;
+                line-height:30px;
+                text-align:center;
+                vertical-align:middle;
+                font-weight:bold;
+                font-size:20px;
+                border-radius: 20px;    
+            }
+            label.coolbox input {display:none;}
+            label.coolbox span {color:#000;}
+            label.coolbox input:checked + span {color:red;}
+            .btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+}
+.modal-title {
+    margin: 0;
+    line-height: 1.42857143;
+}
+.options p{ 
+    margin-top: -27px;
+}
