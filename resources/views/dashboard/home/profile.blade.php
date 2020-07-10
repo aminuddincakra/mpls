@@ -40,7 +40,7 @@
                   </tr>
                   <tr>
                     <td class="tg-0lax" width="200px">Link WA Group</td>
-                    <td class="tg-0lax">: {{ \Auth::user()->link }}</td>
+                    <td class="tg-0lax">: <a href="{{ \Auth::user()->link }}" target="_blank">{{ \Auth::user()->link }}</a></td>
                   </tr>
                 </tbody>
                 </table>
