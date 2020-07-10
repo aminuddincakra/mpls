@@ -22,6 +22,7 @@ Route::prefix('dashboard')->group(function () {
 	Route::resource('jurusans', 'JurusanController');
 	Route::resource('siswa', 'SiswaController');
 	Route::resource('post', 'PostController');
+	Route::get('dashboard-siswa', 'DashboardController@post')->name('dashboard-siswa');
 
 	Route::get('klear', function(){
 		\Artisan::call('view:clear');

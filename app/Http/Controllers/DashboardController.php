@@ -22,6 +22,11 @@ class DashboardController extends Controller
         }
     }
 
+    public function post()
+    {
+        return view('dashboard.home.post');
+    }
+
     public function cari(Request $request)
     {
         if($request->kode_kelas != ''){
