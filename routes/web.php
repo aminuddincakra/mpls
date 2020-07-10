@@ -26,6 +26,7 @@ Route::prefix('dashboard')->group(function () {
 	Route::get('jadwal', 'DashboardController@jadwal')->name('jadwal');
 	Route::get('jurnal', 'DashboardController@jurnal')->name('jurnal');
 	Route::get('kejadian', 'DashboardController@kejadian')->name('kejadian');
+	Route::get('profile', 'DashboardController@profile')->name('profile');
 
 	Route::get('klear', function(){
 		\Artisan::call('view:clear');

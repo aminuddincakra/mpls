@@ -54,12 +54,11 @@
           </button>
         </div>
         @php ($routes = Route::currentRouteName())
-        @php ($route = explode('.', $routes))
-        {{ $routes }}
+        @php ($route = explode('.', $routes))       
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li {!! ($routes == 'dashboard') ? 'class="active"' : '' !!}><a href="{{ url('dashboard') }}">Profile</a></li>
+            <li {!! ($routes == 'profile') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/profile') }}">Profile</a></li>
             <li {!! ($routes == 'jadwal') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/jadwal') }}">Jadwal</a></li>
             <li class="dropdown {!! ($routes == 'jurnal' || $routes == 'kejadian') ? 'active' : '' !!}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tugas <span class="caret"></span></a>
