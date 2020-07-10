@@ -28,6 +28,7 @@ Route::prefix('dashboard')->group(function () {
 	Route::get('kejadian', 'DashboardController@kejadian')->name('kejadian');
 	Route::get('profile', 'DashboardController@profile')->name('profile');
 	Route::get('home', 'DashboardController@home')->name('home');
+	Route::get('materi/{id?}', 'DashboardController@materi')->name('materi');
 
 	Route::get('klear', function(){
 		\Artisan::call('view:clear');

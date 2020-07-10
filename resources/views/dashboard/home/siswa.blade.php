@@ -13,9 +13,9 @@
         </ol>
       </section>
 
-      <!-- Main content -->
-      <section class="content">        
-          <div class="box-header with-border">
+     <section class="content">
+            <div class="box box-success">
+              <div class="box-header with-border">
                 <h3 class="box-title">Jadwal</h3>
               </div>
               <div class="box-body">
@@ -67,9 +67,9 @@
   </tr>
 </tbody>
                 </table>
-        </div>
-        <!-- /.box -->
-      </section>
+              </div>
+            </div>
+          </section>
       <!-- /.content -->
     </div>
     <!-- /.container -->
