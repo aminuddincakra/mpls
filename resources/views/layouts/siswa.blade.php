@@ -53,60 +53,28 @@
             <i class="fa fa-bars"></i>
           </button>
         </div>
-
+        @php ($routes = Route::currentRouteName())
+        @php ($route = explode('.', $routes))
+        {{ $routes }}
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Profile</a></li>
-            <li><a href="#">Jadwal</a></li>
-            <li class="dropdown">
+            <li {!! ($routes == 'dashboard') ? 'class="active"' : '' !!}><a href="{{ url('dashboard') }}">Profile</a></li>
+            <li {!! ($routes == 'jadwal') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/jadwal') }}">Jadwal</a></li>
+            <li class="dropdown {!! ($routes == 'jurnal' || $routes == 'kejadian') ? 'active' : '' !!}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tugas <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Jurnal</a></li>
-                <li><a href="#">Kejadian</a></li>                
+                <li {!! ($routes == 'jurnal') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/jurnal') }}">Jurnal</a></li>
+                <li {!! ($routes == 'kejadian') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/kejadian') }}">Kejadian</a></li>
               </ul>
             </li>
-          </ul>          
-        </div>
-        <!-- /.navbar-collapse -->
-        <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <!-- User Account Menu -->
-            <li class="dropdown user user-menu">
-              <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <!-- The user image in the navbar-->
-                <img src="{{ asset('prakerin/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-                <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">{{ Auth::user()->name }}</span>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- The user image in the menu -->
-                <li class="user-header">
-                  <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                  <p>
-                    {{ Auth::user()->name }}
-                    <small>{{ date('d F Y') }}</small>
-                  </p>
-                </li>
-                <!-- Menu Body -->                
-                <!-- Menu Footer-->
-                <li class="user-footer">                  
-                  <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
-                  </div>
-                </li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  {{ csrf_field() }}
-                  <input type="hidden" name="redrrt" value="{{ \Request::segment(1) }}">
-                </form>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <!-- /.navbar-custom-menu -->
+            <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+          </ul>   
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+            <input type="hidden" name="redrrt" value="{{ \Request::segment(1) }}">
+          </form>       
+        </div>        
       </div>
       <!-- /.container-fluid -->
     </nav>

@@ -23,6 +23,9 @@ Route::prefix('dashboard')->group(function () {
 	Route::resource('siswa', 'SiswaController');
 	Route::resource('post', 'PostController');
 	Route::get('dashboard-siswa', 'DashboardController@post')->name('dashboard-siswa');
+	Route::get('jadwal', 'DashboardController@jadwal')->name('jadwal');
+	Route::get('jurnal', 'DashboardController@jurnal')->name('jurnal');
+	Route::get('kejadian', 'DashboardController@kejadian')->name('kejadian');
 
 	Route::get('klear', function(){
 		\Artisan::call('view:clear');
