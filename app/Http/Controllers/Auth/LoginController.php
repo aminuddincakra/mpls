@@ -9,6 +9,7 @@ use Validator;
 use App\User;
 use App\Models\Perm;
 use App\Models\Update;
+use App\Models\Log;
 use Socialite;
 
 class LoginController extends Controller
@@ -104,6 +105,7 @@ class LoginController extends Controller
                     $redirect = (array_key_exists('0', $redir))?$redir['0']:'/dashboard';
                     return redirect($redirect);
                 }else{
+                    Log::insert(['user_id' => \Auth::user()->id, 'text' => 'Login', 'created_at' => date('Y-m-d H:i:s')]);
                     return redirect('/dashboard');
                 }
             }
@@ -202,7 +204,9 @@ class LoginController extends Controller
     }
 
     public function logout(Request $request)
-    {        
+    {
+        Log::insert(['user_id' => \Auth::user()->id, 'text' => 'Logout', 'created_at' => date('Y-m-d H:i:s')]);
+
         $this->guard()->logout();
         $request->session()->flush();
         $request->session()->regenerate();
