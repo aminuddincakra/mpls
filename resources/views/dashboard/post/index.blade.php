@@ -43,6 +43,7 @@
                                                     <input type="checkbox" class="select-all checkbox" name="select-all" />
                                                 </th>
                                                 <th>Judul</th>
+                                                <th>Jurusan</th>
                                                 <th>Status</th>
                                                 <th width="100">Action</th>
                                             </tr>
@@ -55,6 +56,14 @@
                                                             <input type="checkbox" class="select-item checkbox" name="items[]" value="{{ $dt->id }}" />
                                                         </td>
                                                         <td>{{ $dt->name }}</td>
+                                                        <td>
+                                                            @if($dt->jurusan_id == '')
+                                                                Semua Jurusan
+                                                            @else
+                                                                @php ($jur = $dt->jurusan)
+                                                                {{ ($jur) ? $jur->name : 'Semua Jurusan' }}
+                                                            @endif
+                                                        </td>
                                                         <td>{{ ($dt->status == 1) ? 'Published' : 'Draft' }}</td>
                                                         <td>
                                                             <a href="{!! route('post.edit', [$dt->id]) !!}"><i class="fa fa-pencil">&nbsp;</i></a>

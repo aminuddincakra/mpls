@@ -23,6 +23,18 @@
                             </div>
                             <div class="box-body">
                                 {!! Form::model($post, ['route' => ['post.update', $post->id], 'method' => 'patch','class' => 'form-horizontal form-material']) !!}
+                                    <div class="form-group {{ $errors->has('jurusan_id') ? ' has-error' : '' }}">
+                                        <label class="col-md-12">Judul</label>
+                                        <div class="col-md-12">
+                                            @php ($jur = ($post->jurusan_id == '') ? 0 : $post->jurusan_id)
+                                            {{ Form::select('jurusan_id', $jurusan, $jur, ['placeholder' => 'Pilih Jurusan', 'class' => 'form-control select2', 'style' => 'width: 100%;', 'required' => 'required']) }}
+                                            @if ($errors->has('jurusan_id'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('jurusan_id') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                                         <label class="col-md-12">Judul</label>
                                         <div class="col-md-12">

@@ -27,7 +27,7 @@
                                     <div class="form-group {{ $errors->has('jurusan_id') ? ' has-error' : '' }}">
                                         <label class="col-md-12">Judul</label>
                                         <div class="col-md-12">
-                                            
+                                            {{ Form::select('jurusan_id', $jurusan, old('jurusan_id'), ['placeholder' => 'Pilih Jurusan', 'class' => 'form-control select2', 'style' => 'width: 100%;', 'required' => 'required']) }}
                                             @if ($errors->has('jurusan_id'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('jurusan_id') }}</strong>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\API\CreatePostAPIRequest;
 use App\Http\Requests\API\UpdatePostAPIRequest;
 use App\Models\Post;
+use App\Models\Jurusan;
 use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -45,8 +46,14 @@ class PostController extends AppBaseController
     }
 
     public function create()
-    {
-        return view('dashboard.post.create');
+    {        
+        $data[] = 'Semua Jurusan';
+        $jurusan = Jurusan::pluck('name', 'id')->toArray();
+        foreach($jurusan as $key => $dt){
+            $data[$key] = $dt;
+        }
+
+        return view('dashboard.post.create')->with('jurusan', $data);
     }
 
     /**
@@ -63,6 +70,7 @@ class PostController extends AppBaseController
 
         $input['status'] = ($request->status) ? 1 : 0;
         $input['pinned'] = ($request->pinned) ? 1 : 0;
+        $input['jurusan_id'] = ($request->jurusan_id) ? $request->jurusan_id : null;
         $posts = $this->postRepository->create($input);
 
         flash('Selamat, '.$request->name.' berhasil disimpan','success');
@@ -79,7 +87,13 @@ class PostController extends AppBaseController
             return redirect('dashboard/post');
         }
 
-        return view('dashboard.post.edit')->with('post',$post);
+        $data[] = 'Semua Jurusan';
+        $jurusan = Jurusan::pluck('name', 'id')->toArray();
+        foreach($jurusan as $key => $dt){
+            $data[$key] = $dt;
+        }        
+
+        return view('dashboard.post.edit')->with('post',$post)->with('jurusan', $data);
     }
 
     /**
@@ -125,6 +139,7 @@ class PostController extends AppBaseController
 
         $input['status'] = ($request->status) ? 1 : 0;
         $input['pinned'] = ($request->pinned) ? 1 : 0;
+        $input['jurusan_id'] = ($request->jurusan_id) ? $request->jurusan_id : null;
         $post = $this->postRepository->update($input, $id);
 
         flash('Selamat, '.$request->name.' berhasil diupdate','success');

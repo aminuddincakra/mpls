@@ -57,5 +57,8 @@ class Post extends Model
         'name' => 'required',        
     ];
 
-    
+    public function jurusan()
+    {
+        return $this->belongsTo('App\Models\Jurusan', 'jurusan_id');
+    }
 }
