@@ -27,6 +27,11 @@ class DashboardController extends Controller
         return view('dashboard.home.profile');
     }
 
+    public function home()
+    {
+        return view('dashboard.home.home');
+    }
+
     public function jadwal()
     {
         return view('dashboard.home.jadwal');
