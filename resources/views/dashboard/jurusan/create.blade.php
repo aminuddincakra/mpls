@@ -24,8 +24,19 @@
                             <div class="box-body">
                                 <form class="form-horizontal form-material" method="POST" action="{{ url('dashboard/jurusans') }}">
                                     {{ csrf_field() }}
+                                    <div class="form-group {{ $errors->has('kode') ? ' has-error' : '' }}">
+                                        <label class="col-md-12">Kode Jurusan</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Masukkan kode jurusan" class="form-control form-control-line" name="kode" value="{{ old('kode') }}">
+                                            @if ($errors->has('kode'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('kode') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-12">Nama Role</label>
+                                        <label class="col-md-12">Nama Jurusan</label>
                                         <div class="col-md-12">
                                             <input type="text" placeholder="Masukkan nama jurusan" class="form-control form-control-line" name="name" value="{{ old('name') }}">
                                             @if ($errors->has('name'))
@@ -34,7 +45,7 @@
                                                 </span>
                                             @endif
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <a href="{{ url('dashboard/jurusans') }}" class="btn btn-default">Cancel</a>

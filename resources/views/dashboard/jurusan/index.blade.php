@@ -42,6 +42,7 @@
                                                 <th class="active" width="5">
                                                     <input type="checkbox" class="select-all checkbox" name="select-all" />
                                                 </th>
+                                                <th>Kode</th>
                                                 <th>Name</th>
                                                 <th width="100">Action</th>
                                             </tr>
@@ -53,6 +54,7 @@
                                                         <td class="active">
                                                             <input type="checkbox" class="select-item checkbox" name="items[]" value="{{ $dt->id }}" />
                                                         </td>
+                                                        <td>{{ $dt->kode }}</td>
                                                         <td>{{ $dt->name }}</td>
                                                         <td>
                                                             <a href="{!! route('jurusans.edit', [$dt->id]) !!}"><i class="fa fa-pencil">&nbsp;</i></a>

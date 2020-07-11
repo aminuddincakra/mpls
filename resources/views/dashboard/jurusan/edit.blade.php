@@ -23,8 +23,19 @@
                             </div>
                             <div class="box-body">
                                 {!! Form::model($jurusan, ['route' => ['jurusans.update', $jurusan->id], 'method' => 'patch','class' => 'form-horizontal form-material']) !!}
+                                    <div class="form-group {{ $errors->has('kode') ? ' has-error' : '' }}">
+                                        <label class="col-md-12">Kode Jurusan</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Masukkan kode jurusan" class="form-control form-control-line" name="kode" value="{{ $jurusan->kode }}">
+                                            @if ($errors->has('kode'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('kode') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-12">Nama Role</label>
+                                        <label class="col-md-12">Nama Jurusan</label>
                                         <div class="col-md-12">
                                             <input type="text" placeholder="Masukkan nama jurusan" class="form-control form-control-line" name="name" value="{{ $jurusan->name }}">
                                             @if ($errors->has('name'))
