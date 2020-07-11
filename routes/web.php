@@ -29,6 +29,7 @@ Route::prefix('dashboard')->group(function () {
 	Route::get('profile', 'DashboardController@profile')->name('profile');
 	Route::get('home', 'DashboardController@home')->name('home');
 	Route::get('materi/{id?}', 'DashboardController@materi')->name('materi');
+	Route::post('siswa/import', 'SiswaController@import');
 
 	Route::get('klear', function(){
 		\Artisan::call('view:clear');

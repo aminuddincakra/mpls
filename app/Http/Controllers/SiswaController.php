@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Models\Jurusan;
+use Response;
+use Validator;
+use Excel;
 
 class SiswaController extends Controller
 {
@@ -13,6 +18,54 @@ class SiswaController extends Controller
 
     public function index()
     {
-    	return view('dashboard.siswa.index');
+    	$siswa = User::where('perm_id', 2)->orderBy('jurusan_id','ASC')->paginate(20);
+
+    	return view('dashboard.siswa.index')->with('siswa',$siswa);
+    }
+
+    public function import(Request $request)
+    {
+    	$rules_prf = array(
+            'file'      => 'required'
+        );        
+                
+        $validate = Validator::make($request->all(), $rules_prf);
+                
+        if ($validate->fails()) {                
+            $messages = $validate->messages();
+            return redirect('dashboard/ujians/'.$request->ujian_id.'#import')->withInput()->withErrors($validate);
+        }
+
+        $upload = '';
+
+        if($request->hasFile('file')){
+            $image = $request->file('file');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/sample');
+            $image->move($destinationPath, $name);
+            $upload = $name;
+        }
+        
+        Excel::load(public_path('sample/'.$upload), function($reader) use($request) {
+            $reader->noHeading();
+            $results = $reader->all();
+            $jur = null;
+            $kls = null;
+            foreach($results as $key => $row){
+            	$jur = Jurusan::firstOrCreate(['name' => $row->getTitle(), 'kode' => $row->getTitle()]);
+            	foreach($row as $d){
+            		if($d['0'] != '' AND strpos($d['0'], 'Jurusan:') !== false){
+	            		$kls = str_replace('Jurusan:', '', $d['0']);
+	            	}
+	            	if($d['0'] != '' AND $d['1'] != '' AND $d['2'] != '' AND $d['3'] != '' AND $d['4'] != '' AND $d['5'] != '' AND $d['5'] != '' AND trim($d['1']) != 'NIS'){
+	            		User::insert(['name' => trim($d['4']), 'email' => trim($d['3']), 'password' => \Hash::make(trim($d['3'])), 'kelas' => $kls, 'jurusan_id' => $jur->id, 'perm_id' => 2, 'activate' => 1]);
+	            	}            		
+            	}
+            }
+        });
+        unlink(public_path('sample/'.$upload));
+
+        flash('Selamat, import soal berhasil','success');
+        return redirect('dashboard/siswa#import');
     }
 }

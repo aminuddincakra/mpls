@@ -23,7 +23,7 @@ class Jurusan extends Model
 
 
     public $fillable = [
-        'name'
+        'name', 'kode'
     ];
 
     /**

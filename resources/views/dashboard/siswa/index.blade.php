@@ -16,15 +16,72 @@
     <section class="content">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="box">
-                            <div class="box-header with-border">
-                              <h3 class="box-title">Daftar Siswa</h3>                              
-                            </div>
-                            <div class="box-body">
-                                <p>Maaf sedang dalam pembuatan</p>
-                            </form>
-                            </div>
-                        </div>
+                        <div class="nav-tabs-custom">
+		                    <ul class="nav nav-tabs">
+		                      	<li class="active"><a {!! (isset($_GET['ids']) AND $_GET['ids'] != '')?'':'data-toggle="tab"' !!} href="{{ (isset($_GET['ids']) AND $_GET['ids'] AND $_GET['ids'] != '')?url('dashboard/siswa#daftar'):'#daftar' }}">Daftar Siswa</a></li>
+		                      	<li><a {!! (isset($_GET['ids']) AND $_GET['ids'] != '')?'':'data-toggle="tab"' !!} href="{{ (isset($_GET['ids']) AND $_GET['ids'] AND $_GET['ids'] != '')?url('dashboard/siswa#import'):'#import' }}">Import Siswa</a></li>
+		                    </ul>
+		                    <div class="tab-content">
+		                      	<!-- Font Awesome Icons -->
+		                      	<div class="tab-pane active" id="daftar">
+		                      		<table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="active" width="5">
+                                                    <input type="checkbox" class="select-all checkbox" name="select-all" />
+                                                </th>
+                                                <th>NISN</th>
+                                                <th>Nama</th>
+                                                <th>Jurusan</th>                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(count($siswa) > 0)                                               
+                                                @foreach($siswa as $key => $dt)
+                                                    <tr>
+                                                        <td class="active">
+                                                            <input type="checkbox" class="select-item checkbox" name="items[]" value="{{ $dt->id }}" />
+                                                        </td>
+                                                        <td>{{ $dt->email }}</td>
+                                                        <td>{{ $dt->name }}</td>
+                                                        <td>
+                                                        	@php ($jur = $dt->jurusane)
+                                                        	{{ ($jur) ? $jur->name : '' }}
+                                                        </td>
+                                                    </tr>                                                   
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="3">No data available</td>
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                    {{ $siswa->links() }}
+		                      	</div>
+		                      	<div class="tab-pane" id="import">
+		                      		<form class="form-horizontal form-material" method="POST" action="{{ url('dashboard/siswa/import') }}" enctype="multipart/form-data">
+		                                {{ csrf_field() }}
+		                                <div class="form-group {{ $errors->has('file') ? ' has-error' : '' }}">		                                	
+		                                    <label class="col-md-12">File Import</label>
+		                                    <div class="col-md-12">
+		                                    	{{ Form::file('file', $attributes = []) }}
+		                                       	@if ($errors->has('file'))
+			                                        <span class="help-block">
+			                                        	<strong>{{ $errors->first('file') }}</strong>
+			                                       	</span>
+		                                       	@endif		                                        
+		                                    </div>                                       
+		                                </div>
+		                               	<div class="form-group">
+		                                    <div class="col-sm-12">
+		                                        <button type="submit" class="btn btn-success">Import</button>
+		                                    </div>
+		                                </div>
+		                            </form>
+		                      	</div>
+		                    </div>
+		                </div>
                     </div>
                 </div>
     </section>
