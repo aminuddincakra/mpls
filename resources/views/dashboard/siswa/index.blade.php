@@ -19,6 +19,7 @@
                         <div class="nav-tabs-custom">
 		                    <ul class="nav nav-tabs">
 		                      	<li class="active"><a {!! (isset($_GET['ids']) AND $_GET['ids'] != '')?'':'data-toggle="tab"' !!} href="{{ (isset($_GET['ids']) AND $_GET['ids'] AND $_GET['ids'] != '')?url('dashboard/siswa#daftar'):'#daftar' }}">Daftar Siswa</a></li>
+		                      	<li><a {!! (isset($_GET['ids']) AND $_GET['ids'] != '')?'':'data-toggle="tab"' !!} href="{{ (isset($_GET['ids']) AND $_GET['ids'] AND $_GET['ids'] != '')?url('dashboard/siswa#kelas'):'#kelas' }}">Daftar Kelas</a></li>
 		                      	<li><a {!! (isset($_GET['ids']) AND $_GET['ids'] != '')?'':'data-toggle="tab"' !!} href="{{ (isset($_GET['ids']) AND $_GET['ids'] AND $_GET['ids'] != '')?url('dashboard/siswa#import'):'#import' }}">Import Siswa</a></li>
 		                    </ul>
 		                    <div class="tab-content">
@@ -58,6 +59,53 @@
                                         </tbody>
                                     </table>
                                     {{ $siswa->links() }}
+		                      	</div>
+		                      	<div class="tab-pane" id="kelas">
+		                      		<form class="form-horizontal form-material" method="POST" action="{{ url('dashboard/siswa/kelas') }}" enctype="multipart/form-data">
+		                                {{ csrf_field() }}
+			                      		<table class="table">
+	                                        <thead>
+	                                            <tr>
+	                                                <th class="active" width="5">
+	                                                    <input type="checkbox" class="select-all checkbox" name="select-all" />
+	                                                </th>
+	                                                <th>Kelas</th>
+	                                                <th>Aktifkan</th>                                                
+	                                            </tr>
+	                                        </thead>
+	                                        <tbody>
+	                                            @if(count($kelas) > 0)                                               
+	                                                @foreach($kelas as $key => $dt)
+	                                                	@if($key != '')
+		                                                    <tr>
+		                                                        <td class="active">
+		                                                            <input type="checkbox" class="select-item checkbox" name="items[]" value="{{ $dt }}" />
+		                                                        </td>
+		                                                        <td>{{ $key }}</td>
+		                                                        <td>
+		                                                        	<div class="input-group date">
+					                                                    <div class="input-group-addon">
+					                                                        <i class="fa fa-calendar"></i>
+					                                                    </div>
+					                                                    <input type="text" class="form-control pull-right datepicker" name="aktifkan[{{ $key }}]" value="{{ date('m/d/Y', strtotime($dt)) }}" required="required">
+					                                                </div>
+		                                                        </td>                                                        
+		                                                    </tr>
+	                                                    @endif
+	                                                @endforeach
+	                                            @else
+	                                                <tr>
+	                                                    <td colspan="3">No data available</td>
+	                                                </tr>
+	                                            @endif
+	                                        </tbody>
+	                                    </table>
+	                                    <div class="form-group">
+		                                    <div class="col-sm-12">
+		                                        <button type="submit" class="btn btn-success">Simpan</button>
+		                                    </div>
+		                                </div>
+	                                </form>
 		                      	</div>
 		                      	<div class="tab-pane" id="import">
 		                      		<form class="form-horizontal form-material" method="POST" action="{{ url('dashboard/siswa/import') }}" enctype="multipart/form-data">

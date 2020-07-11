@@ -30,6 +30,7 @@ Route::prefix('dashboard')->group(function () {
 	Route::get('home', 'DashboardController@home')->name('home');
 	Route::get('materi/{id?}', 'DashboardController@materi')->name('materi');
 	Route::post('siswa/import', 'SiswaController@import');
+	Route::post('siswa/kelas', 'SiswaController@kelas');
 
 	Route::get('klear', function(){
 		\Artisan::call('view:clear');
