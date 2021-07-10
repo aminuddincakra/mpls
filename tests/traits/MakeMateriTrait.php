@@ -42,8 +42,9 @@ trait MakeMateriTrait
         $fake = Faker::create();
 
         return array_merge([
-            'name' => $fake->word,
-            'file' => $fake->word,
+            'title' => $fake->word,
+            'content' => $fake->text,
+            'date' => $fake->word,
             'created_at' => $fake->word,
             'updated_at' => $fake->word
         ], $materiFields);

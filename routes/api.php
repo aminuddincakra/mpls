@@ -17,16 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::resource('kelas', 'KelasAPIController');
-
-/*Route::resource('servers', 'ServerAPIController');
-
-Route::resource('sesis', 'SesiAPIController');
-//hanya sekedar mencoba
-
-Route::resource('materis', 'MateriAPIController');*/
-
-Route::resource('jurusans', 'JurusanAPIController');
-
-Route::resource('posts', 'PostAPIController');
+Route::resource('materis', 'MateriAPIController');

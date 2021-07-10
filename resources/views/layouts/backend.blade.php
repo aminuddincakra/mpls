@@ -174,8 +174,8 @@
               <a href="{{ url('dashboard/post') }}"><i class="fa fa-comments-o" aria-hidden="true"></i>Post</a>
             </li>
           @endif
-          <li class="{!! ($route['0'] == 'dashboard-siswa')?'active':'' !!}">
-            <a href="{{ url('dashboard/dashboard-siswa') }}"><i class="fa fa-comments-o" aria-hidden="true"></i>Dashboard Siswa</a>
+          <li class="{!! ($route['0'] == 'pengumumans')?'active':'' !!}">
+            <a href="{{ url('dashboard/pengumumans') }}"><i class="fa fa-comments-o" aria-hidden="true"></i>Pengumuman</a>
           </li>
         @endif        
       </ul>

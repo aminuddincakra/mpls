@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Post;
+use App\Models\Pengumuman;
 use Validator;
 
 class DashboardController extends Controller
@@ -30,7 +31,9 @@ class DashboardController extends Controller
 
     public function home()
     {
-        return view('dashboard.home.home');
+        $pengumuman = Pengumuman::where('status', 1)->orderBy('id', 'ASC')->first();
+
+        return view('dashboard.home.home')->with('pengumuman', $pengumuman);
     }
 
     public function jadwal()

@@ -22,6 +22,7 @@ Route::prefix('dashboard')->group(function () {
 	Route::resource('jurusans', 'JurusanController');
 	Route::resource('siswa', 'SiswaController');
 	Route::resource('post', 'PostController');
+	Route::resource('pengumumans', 'PengumumanController');
 	Route::get('dashboard-siswa', 'DashboardController@post')->name('dashboard-siswa');
 	Route::get('jadwal', 'DashboardController@jadwal')->name('jadwal');
 	Route::get('jurnal', 'DashboardController@jurnal')->name('jurnal');
