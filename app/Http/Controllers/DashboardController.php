@@ -32,7 +32,8 @@ class DashboardController extends Controller
                 })->get();                
             }
 
-            $materi = array_column($data->toArray(), 'id');
+            $mbuh = (is_array($data)) ? $data : $data->toArray();
+            $materi = array_column($mbuh, 'id');
             if(array_key_exists(0, $materi)){
                 Activity::firstOrCreate(['user_id' => \Auth::user()->id, 'post_id' => $materi['0']]);
             }
