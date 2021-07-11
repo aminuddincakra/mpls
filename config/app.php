@@ -199,6 +199,7 @@ return [
 
         Barryvdh\DomPDF\ServiceProvider::class,
         Cohensive\Embed\EmbedServiceProvider::class,
+        App\Providers\PHPExcelMacroServiceProvider::class,
     ],
 
     /*

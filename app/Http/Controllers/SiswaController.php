@@ -56,7 +56,7 @@ class SiswaController extends Controller
                 if($key > 0){
                     $jur = Jurusan::firstOrCreate(['name' => $row['4']]);                    
                     if($row['0'] != '' AND $row['1'] != '' AND $row['2'] != '' AND $row['3'] != '' AND $row['4'] != '' AND $row['5'] != '' AND $row['6'] != ''){
-                        User::insert(['name' => trim($row['2']), 'email' => trim($row['1']), 'password' => \Hash::make(trim($row['1'])), 'kelas' => trim($row['3']), 'jurusan_id' => $jur->id, 'perm_id' => 2, 'activate' => 1]);
+                        User::insert(['name' => trim($row['2']), 'email' => trim($row['1']), 'password' => \Hash::make(trim($row['1'])), 'kelas' => trim($row['3']), 'jurusan_id' => $jur->id, 'perm_id' => 2, 'activate' => 1, 'wali_kelas' => trim($row['5']), 'link' => trim($row['6'])]);
                     }  
                 }
             }

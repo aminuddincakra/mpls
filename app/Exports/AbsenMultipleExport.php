@@ -35,9 +35,8 @@ class AbsenMultipleExport implements WithMultipleSheets
         $data = $this->data;
         $request = $this->request;
 
-        foreach($data as $key => $dx){
-            dd($dx);
-            $sheets[] = new ClockInOutPerStudentAttendanceExport($dx, $period, $centre, $num_column, $key, $request);
+        foreach($data as $key => $dx){            
+            $sheets[] = new AbsenExport($dx, $key, $request);
         }
 
         return $sheets;

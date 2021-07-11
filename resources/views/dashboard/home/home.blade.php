@@ -65,7 +65,8 @@
                                       {!! Embed::make($dt->embed)->parseUrl()->getIframe() !!}
                                     @endif
                                     @if($dt->file != '' AND file_exists('uploads/'.$dt->file))
-                                      <embed src="{{ asset('uploads/'.$dt->file) }}" width="600" height="500" alt="pdf" />
+                                        <embed src="{{ asset('uploads/'.$dt->file) }}" width="600" height="500" alt="pdf" />
+                                        <a href="{{ asset('uploads/'.$dt->file) }}" class="btn btn-primary">Download Materi</a>
                                     @endif
                                     @if($key != intval(count($data)) - 1)
                                       <button class="btn btn-primary nextBtn pull-right submit-activity" type="button" data-user="{{ \Auth::user()->id }}" data-materi="{{ (array_key_exists($key+1, $materi)) ? $materi[$key+1] : '' }}">Selanjutnya</button>

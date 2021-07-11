@@ -94,6 +94,7 @@ class MateriController extends AppBaseController
             );
 
             $uploadedFile = Excel::store(new AbsenMultipleExport($data, $request), $uploadDest, 'public_uploads');            
+            return response()->download(public_path('uploads/'.$uploadDest));
         }        
     }
 
