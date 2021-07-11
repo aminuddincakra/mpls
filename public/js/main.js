@@ -665,7 +665,7 @@
       path_absolute : "/",
       selector: "textarea.editor",
       plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste","tiny_mce_wiris"],
-      toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | tiny_mce_wiris_formulaEditor",
+      toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
       menubar:false,
       relative_urls: false,
       file_browser_callback : function(field_name, url, type, win) {

@@ -70,7 +70,9 @@ class MateriController extends AppBaseController
 
     public function post_report(Request $request)
     {
-        dd($request->jenis);
+        if($request->jenis == 'hadir'){
+            dd('ok');
+        }        
     }
 
     /**
