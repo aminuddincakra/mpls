@@ -102,7 +102,7 @@ class MateriController extends AppBaseController
             $uploadDest = '/sample/' . $name;
 
             $materi = Materi::whereDate('date', \Carbon\Carbon::now()->format('Y-m-d'))->first();
-            $post = $materi->posts->pluck('id', 'name');            
+            $post = ($materi->posts) ? $materi->posts->pluck('id', 'name') : [];
             $id_all = array_values($post->toArray());
 
             $last_col = self::column_excel(count($post) + 3);            
