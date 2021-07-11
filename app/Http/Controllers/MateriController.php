@@ -18,6 +18,7 @@ use Response;
 
 use Excel;
 use App\Exports\AbsenMultipleExport;
+use App\Exports\ActivityMultipleExport;
 
 /**
  * Class MateriController
@@ -95,7 +96,45 @@ class MateriController extends AppBaseController
 
             $uploadedFile = Excel::store(new AbsenMultipleExport($data, $request), $uploadDest, 'public_uploads');            
             return response()->download(public_path('uploads/'.$uploadDest));
-        }        
+        }else{
+            $data = [];
+            $name = "rekap_keaktifan_".time().".xlsx";
+            $uploadDest = '/sample/' . $name;
+
+            $materi = Materi::whereDate('date', \Carbon\Carbon::now()->format('Y-m-d'))->first();
+            $post = $materi->posts->pluck('id', 'name');            
+            $id_all = array_values($post->toArray());
+
+            $last_col = self::column_excel(count($post) + 3);            
+            $user = User::where('perm_id', 2)->get();
+            foreach($user as $dt){
+                $data[] = array(
+                    'id'        => $dt->id,
+                    'name'      => $dt->name,
+                    'kelas'     => $dt->kelas,
+                    'activity'  => $dt->activitiesFilter($id_all)->pluck('created_at', 'post_id')->toArray()
+                );
+            }
+            
+            $uploadedFile = Excel::store(new ActivityMultipleExport($data, $post, $last_col, $request), $uploadDest, 'public_uploads');
+            return response()->download(public_path('uploads/'.$uploadDest));
+        }
+    }
+
+    private static function column_excel($val)
+    {
+        $char = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+
+        $preff = '';
+        $bagi = doubleval(doubleval($val) / 26);
+        $col = ($val % 26 == 0) ? $val : $val % 26;
+        if($bagi > 1){
+            if(array_key_exists(intval($bagi)-1, $char)){
+                $preff = $char[intval($bagi)-1];
+            }
+        }
+        
+        return $preff.$char[$col-1];
     }
 
     /**

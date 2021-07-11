@@ -76,4 +76,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Log')->orderBy('id', 'ASC');
     }    
+
+    public function activitiesFilter($val)
+    {
+        return $this->hasMany('App\Models\Activity')->whereIn('post_id', $val)->orderBy('id', 'ASC');
+    }
 }
