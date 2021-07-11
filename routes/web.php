@@ -23,6 +23,15 @@ Route::prefix('dashboard')->group(function () {
 	Route::resource('siswa', 'SiswaController');
 	Route::resource('post', 'PostController');
 	Route::resource('pengumumans', 'PengumumanController');
+	Route::resource('materis', 'MateriController');
+	Route::get('detail-materi/{id?}/create', 'MateriController@create_detail')->name('detail-materi');
+	Route::get('detail-materi/{id?}/{ids?}/edit', 'MateriController@edit_detail')->name('detail-materi.edit');
+	Route::post('detail-materi/{id?}', 'MateriController@post_detail');
+	Route::put('detail-materi/{id?}/{ids?}', 'MateriController@update_detail')->name('detail-materi.update');
+	Route::patch('detail-materi/{id?}/{ids?}', 'MateriController@update_detail')->name('detail-materi.update');
+	Route::delete('detail-materi/{id?}/{ids?}', 'MateriController@destroy_detail')->name('detail-materi.destroy');
+	Route::post('submit-activity', 'MateriController@store_activity');
+	Route::get('review-materi/{id?}', 'MateriController@review')->name('review-materi');
 	Route::get('dashboard-siswa', 'DashboardController@post')->name('dashboard-siswa');
 	Route::get('jadwal', 'DashboardController@jadwal')->name('jadwal');
 	Route::get('jurnal', 'DashboardController@jurnal')->name('jurnal');

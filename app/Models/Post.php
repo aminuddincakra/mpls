@@ -32,7 +32,9 @@ class Post extends Model
         'status',
         'pinned',
         'embed',
-        'jurusan_id'
+        'jurusan_id',
+        'materi_id',
+        'file'
     ];
 
     /**

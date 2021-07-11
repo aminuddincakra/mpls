@@ -194,7 +194,6 @@
   });
 
   $(document).ready(function () {
-
     var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');
@@ -234,7 +233,19 @@
     });
 
     $('div.setup-panel div a.btn-success').trigger('click');
-});
+  });
+
+  $('.submit-activity').each(function(){
+    var t = $(this);
+
+    t.click(function(){
+      var x = $(this),
+          user = x.data('user'),
+          materi = x.data('materi');
+
+      $.post( "/dashboard/submit-activity", { user: user, materi: materi } );
+    });
+  })
 </script>
 </body>
 </html>

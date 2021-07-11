@@ -24,6 +24,7 @@ class VerifyCsrfToken extends BaseVerifier
         'cbt/reg-server',
         'cbt/save-nilai',
         'api/login',
-        'waktu-selesai'
+        'waktu-selesai',
+        'dashboard/submit-activity'
     ];
 }

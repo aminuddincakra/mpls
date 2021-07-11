@@ -52,5 +52,8 @@ class Materi extends Model
         'date' => 'required'
     ];
 
-    
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post')->orderBy('id', 'ASC');
+    }    
 }

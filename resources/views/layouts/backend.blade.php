@@ -31,6 +31,52 @@
   <link rel="stylesheet" href="{{ asset('prakerin/plugins/iCheck/all.css') }}">
   <link rel="stylesheet" href="{{ asset('prakerin/plugins/timepicker/bootstrap-timepicker.min.css') }}">
   <link href="{{ asset('css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+  <style type="text/css">
+    .stepwizard-step p {
+        margin-top: 0px;
+        color:#666;
+    }
+    .stepwizard-row {
+        display: table-row;
+    }
+    .stepwizard {
+        display: table;
+        width: 100%;
+        position: relative;
+    }
+    .stepwizard-step button[disabled] {
+        /*opacity: 1 !important;
+        filter: alpha(opacity=100) !important;*/
+    }
+    .stepwizard .btn.disabled, .stepwizard .btn[disabled], .stepwizard fieldset[disabled] .btn {
+        opacity:1 !important;
+        color:#bbb;
+    }
+    .stepwizard-row:before {
+        top: 14px;
+        bottom: 0;
+        position: absolute;
+        content:" ";
+        width: 100%;
+        height: 1px;
+        background-color: #ccc;
+        z-index: 0;
+    }
+    .stepwizard-step {
+        display: table-cell;
+        text-align: center;
+        position: relative;
+    }
+    .btn-circle {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.428571429;
+        border-radius: 15px;
+    }
+  </style>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -168,10 +214,10 @@
             <li class="{!! ($route['0'] == 'siswa')?'active':'' !!}">
               <a href="{{ url('dashboard/siswa') }}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Siswa</a>
             </li>
-          @endif
+          @endif          
           @if(in_array('Post',$perm))
-            <li class="{!! ($route['0'] == 'post')?'active':'' !!}">
-              <a href="{{ url('dashboard/post') }}"><i class="fa fa-comments-o" aria-hidden="true"></i>Post</a>
+            <li class="{!! ($route['0'] == 'materis' || $routes == 'detail-materi' || $routes == 'review-materi')?'active':'' !!}">
+              <a href="{{ url('dashboard/materis') }}"><i class="fa fa-cog" aria-hidden="true"></i>Materi</a>
             </li>
           @endif
           <li class="{!! ($route['0'] == 'pengumumans')?'active':'' !!}">
@@ -546,5 +592,48 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('prakerin/dist/js/demo.js') }}"></script>
 <script src="{{ asset('js/main.js?v=1') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var navListItems = $('div.setup-panel div a'),
+        allWells = $('.setup-content'),
+        allNextBtn = $('.nextBtn');
+
+    allWells.hide();
+
+    navListItems.click(function (e) {
+        e.preventDefault();
+        var $target = $($(this).attr('href')),
+            $item = $(this);
+
+        if (!$item.hasClass('disabled')) {
+            navListItems.removeClass('btn-success').addClass('btn-default');
+            $item.addClass('btn-success');
+            allWells.hide();
+            $target.show();
+            $target.find('input:eq(0)').focus();
+        }
+    });
+
+    allNextBtn.click(function () {
+        var curStep = $(this).closest(".setup-content"),
+            curStepBtn = curStep.attr("id"),
+            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+            curInputs = curStep.find("input[type='text'],input[type='url']"),
+            isValid = true;
+
+        $(".form-group").removeClass("has-error");
+        for (var i = 0; i < curInputs.length; i++) {
+            if (!curInputs[i].validity.valid) {
+                isValid = false;
+                $(curInputs[i]).closest(".form-group").addClass("has-error");
+            }
+        }
+
+        if (isValid) nextStepWizard.removeAttr('disabled').trigger('click');
+    });
+
+    $('div.setup-panel div a.btn-success').trigger('click');
+  });
+</script>
 </body>
 </html>

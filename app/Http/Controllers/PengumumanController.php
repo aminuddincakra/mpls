@@ -39,7 +39,7 @@ class PengumumanController extends AppBaseController
     {
         $this->pengumumanRepository->pushCriteria(new RequestCriteria($request));
         $this->pengumumanRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $pengumumen = $this->pengumumanRepository->all();
+        $pengumumen = $this->pengumumanRepository->orderBy('id', 'DESC')->all();
 
         return view('dashboard.pengumuman.index')->with('pengumumen',$pengumumen);
     }

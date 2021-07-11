@@ -199,6 +199,7 @@ return [
         Spatie\Backup\BackupServiceProvider::class,
 
         Barryvdh\DomPDF\ServiceProvider::class,
+        Cohensive\Embed\EmbedServiceProvider::class,
     ],
 
     /*
@@ -262,6 +263,7 @@ return [
         'Datatables' => Yajra\Datatables\DatatablesServiceProvider::class,
 
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Embed' => Cohensive\Embed\Facades\Embed::class
     ],
 
 ];

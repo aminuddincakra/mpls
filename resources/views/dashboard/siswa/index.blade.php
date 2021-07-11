@@ -110,7 +110,7 @@
 		                      	<div class="tab-pane" id="import">
 		                      		<form class="form-horizontal form-material" method="POST" action="{{ url('dashboard/siswa/import') }}" enctype="multipart/form-data">
 		                                {{ csrf_field() }}
-		                                <div class="form-group {{ $errors->has('file') ? ' has-error' : '' }}">		                                	
+		                                <div class="form-group {{ $errors->has('file') ? ' has-error' : '' }}">
 		                                    <label class="col-md-12">File Import</label>
 		                                    <div class="col-md-12">
 		                                    	{{ Form::file('file', $attributes = []) }}

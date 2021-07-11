@@ -20,7 +20,8 @@
         "maatwebsite/excel": "~2.1.0",
         "spatie/laravel-backup": "^5.0.0",
         "unisharp/laravel-filemanager": "~1.8",
-        "yajra/laravel-datatables-oracle": "~6.0"
+        "yajra/laravel-datatables-oracle": "~6.0",
+        "cohensive/embed": "5.5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

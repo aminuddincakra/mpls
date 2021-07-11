@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\Post;
 use App\Models\Pengumuman;
+use App\Models\Materi;
+use App\Models\Activity;
 use Validator;
 
 class DashboardController extends Controller
@@ -20,7 +22,22 @@ class DashboardController extends Controller
         if(\Auth::user()->perm_id == 1){
             return view('dashboard.home.index');
         }else{
-            return view('dashboard.home.siswa');
+            $pengumuman = Pengumuman::where('status', 1)->orderBy('id', 'ASC')->first();
+            $materi = Materi::whereDate('date', \Carbon\Carbon::now()->format('Y-m-d'))->first();
+            $data = [];
+            if($materi){
+                $jur = \Auth::user()->jurusan_id;
+                $data = Post::where('materi_id', $materi->id)->where(function($query) use($jur){
+                    return $query->whereNull('jurusan_id')->orWhere('jurusan_id', $jur);
+                })->get();                
+            }
+
+            $materi = array_column($data->toArray(), 'id');
+            if(array_key_exists(0, $materi)){
+                Activity::firstOrCreate(['user_id' => \Auth::user()->id, 'post_id' => $materi['0']]);
+            }
+
+            return view('dashboard.home.home')->with('pengumuman', $pengumuman)->with('materi', $materi)->with('data', $data);
         }
     }
 
@@ -32,8 +49,9 @@ class DashboardController extends Controller
     public function home()
     {
         $pengumuman = Pengumuman::where('status', 1)->orderBy('id', 'ASC')->first();
+        $materi = Materi::whereDate('date', \Carbon\Carbon::now()->format('Y-m-d'))->first();
 
-        return view('dashboard.home.home')->with('pengumuman', $pengumuman);
+        return view('dashboard.home.home')->with('pengumuman', $pengumuman)->with('materi', $materi);
     }
 
     public function jadwal()
