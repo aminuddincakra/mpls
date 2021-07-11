@@ -594,7 +594,7 @@
 <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('prakerin/dist/js/demo.js') }}"></script>
-<script src="{{ asset('js/main.js?v=2') }}"></script>
+<script src="{{ asset('js/main.js?v=3') }}"></script>
 <script type="text/javascript">
   $(document).ready(function () {
     var navListItems = $('div.setup-panel div a'),
