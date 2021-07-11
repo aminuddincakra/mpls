@@ -25,7 +25,7 @@
                                 <form class="form-horizontal form-material" method="POST" action="{{ url('dashboard/detail-materi/'.$id) }}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="form-group {{ $errors->has('jurusan_id') ? ' has-error' : '' }}">
-                                        <label class="col-md-12">Judul</label>
+                                        <label class="col-md-12">Jurusan</label>
                                         <div class="col-md-12">
                                             {{ Form::select('jurusan_id', $jurusan, old('jurusan_id'), ['placeholder' => 'Pilih Jurusan', 'class' => 'form-control select2', 'style' => 'width: 100%;']) }}
                                             @if ($errors->has('jurusan_id'))

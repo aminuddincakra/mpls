@@ -24,7 +24,7 @@
                             <div class="box-body">
                                 {!! Form::model($post, ['route' => ['detail-materi.update', $post->id, $ids], 'method' => 'patch','class' => 'form-horizontal form-material', 'files' => true]) !!}
                                     <div class="form-group {{ $errors->has('jurusan_id') ? ' has-error' : '' }}">
-                                        <label class="col-md-12">Judul</label>
+                                        <label class="col-md-12">Jurusan</label>
                                         <div class="col-md-12">
                                             @php ($jur = ($post->jurusan_id == '') ? 0 : $post->jurusan_id)
                                             {{ Form::select('jurusan_id', $jurusan, $jur, ['placeholder' => 'Pilih Jurusan', 'class' => 'form-control select2', 'style' => 'width: 100%;']) }}

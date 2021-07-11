@@ -48,7 +48,7 @@
                                 <div class="stepwizard-row setup-panel">
                                     @foreach($name as $key => $dt)
                                       <div class="stepwizard-step col-xs-3"> 
-                                        <a href="#step-{{ $key+1 }}" type="button" class="btn {!! ($key == 0) ? 'btn-success' : 'btn-default' !!} btn-circle" {!! ($key == 0) ? '' : 'disabled="disabled"' !!}>{{ $key+1 }}</a>
+                                        <a href="#step-{{ $key+1 }}" type="button" class="btn {!! ($key == 0) ? 'btn-success' : 'btn-default' !!} btn-circle submit-activity" {!! ($key == 0) ? '' : 'disabled="disabled"' !!} data-user="{{ \Auth::user()->id }}" data-materi="{{ (array_key_exists($key, $materi)) ? $materi[$key] : '' }}">{{ $key+1 }}</a>
                                         <p><small>{{ $dt }}</small></p>
                                       </div>
                                     @endforeach
@@ -68,7 +68,7 @@
                                       <embed src="{{ asset('uploads/'.$dt->file) }}" width="600" height="500" alt="pdf" />
                                     @endif
                                     @if($key != intval(count($data)) - 1)
-                                      <button class="btn btn-primary nextBtn pull-right submit-activity" type="button" data-user="{{ \Auth::user()->id }}" data-materi="{{ (array_key_exists($key+1, $materi)) ? $materi[$key+1] : '' }}">Next</button>
+                                      <button class="btn btn-primary nextBtn pull-right submit-activity" type="button" data-user="{{ \Auth::user()->id }}" data-materi="{{ (array_key_exists($key+1, $materi)) ? $materi[$key+1] : '' }}">Selanjutnya</button>
                                     @endif
                                 </div>
                               </div>

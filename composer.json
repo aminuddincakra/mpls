@@ -21,7 +21,8 @@
         "spatie/laravel-backup": "^5.0.0",
         "unisharp/laravel-filemanager": "~1.8",
         "yajra/laravel-datatables-oracle": "~6.0",
-        "cohensive/embed": "5.5.*"
+        "cohensive/embed": "5.5.*",
+        "jenssegers/agent": "^2.6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

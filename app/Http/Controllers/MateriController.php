@@ -63,6 +63,16 @@ class MateriController extends AppBaseController
         return view('dashboard.materi.create_detail')->with('jurusan', $data)->with('id', $id);   
     }
 
+    public function report()
+    {
+        return view('dashboard.materi.report');
+    }
+
+    public function post_report(Request $request)
+    {
+        dd($request->jenis);
+    }
+
     /**
      * Store a newly created Materi in storage.
      * POST /materis

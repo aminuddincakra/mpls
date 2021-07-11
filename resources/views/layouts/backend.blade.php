@@ -216,12 +216,15 @@
             </li>
           @endif          
           @if(in_array('Post',$perm))
-            <li class="{!! ($route['0'] == 'materis' || $routes == 'detail-materi' || $routes == 'review-materi')?'active':'' !!}">
+            <li class="{!! ($route['0'] == 'materis' || $routes == 'detail-materi' || $routes == 'review-materi' || $route['0'] == 'detail-materi')?'active':'' !!}">
               <a href="{{ url('dashboard/materis') }}"><i class="fa fa-cog" aria-hidden="true"></i>Materi</a>
             </li>
           @endif
           <li class="{!! ($route['0'] == 'pengumumans')?'active':'' !!}">
             <a href="{{ url('dashboard/pengumumans') }}"><i class="fa fa-comments-o" aria-hidden="true"></i>Pengumuman</a>
+          </li>
+          <li class="{!! ($route['0'] == 'report')?'active':'' !!}">
+            <a href="{{ url('dashboard/report') }}"><i class="fa fa-file" aria-hidden="true"></i>Report</a>
           </li>
         @endif        
       </ul>

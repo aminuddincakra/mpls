@@ -104,16 +104,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li {!! ($routes == 'home') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/home') }}">Dashboard</a></li>
-            <li {!! ($routes == 'profile') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/profile') }}">Profile</a></li>
-            <li {!! ($routes == 'jadwal') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/jadwal') }}">Jadwal</a></li>
-            <li class="dropdown {!! ($routes == 'jurnal' || $routes == 'kejadian') ? 'active' : '' !!}">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tugas <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li {!! ($routes == 'jurnal') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/jurnal') }}">Jurnal</a></li>
-                <li {!! ($routes == 'kejadian') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/kejadian') }}">Kejadian</a></li>
-              </ul>
-            </li>
+            <li {!! ($routes == 'home') ? 'class="active"' : '' !!}><a href="{{ url('dashboard') }}">Dashboard</a></li>            
             <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
           </ul>   
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

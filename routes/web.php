@@ -30,6 +30,8 @@ Route::prefix('dashboard')->group(function () {
 	Route::put('detail-materi/{id?}/{ids?}', 'MateriController@update_detail')->name('detail-materi.update');
 	Route::patch('detail-materi/{id?}/{ids?}', 'MateriController@update_detail')->name('detail-materi.update');
 	Route::delete('detail-materi/{id?}/{ids?}', 'MateriController@destroy_detail')->name('detail-materi.destroy');
+	Route::get('report', 'MateriController@report')->name('report');
+	Route::post('report', 'MateriController@post_report');
 	Route::post('submit-activity', 'MateriController@store_activity');
 	Route::get('review-materi/{id?}', 'MateriController@review')->name('review-materi');
 	Route::get('dashboard-siswa', 'DashboardController@post')->name('dashboard-siswa');

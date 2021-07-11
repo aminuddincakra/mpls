@@ -53,15 +53,12 @@ class SiswaController extends Controller
             $jur = null;
             $kls = null;
             foreach($results as $key => $row){
-            	$jur = Jurusan::firstOrCreate(['name' => $row->getTitle(), 'kode' => $row->getTitle()]);
-            	foreach($row as $d){
-            		if($d['0'] != '' AND strpos($d['0'], 'Jurusan:') !== false){
-	            		$kls = str_replace('Jurusan:', '', $d['0']);
-	            	}
-	            	if($d['0'] != '' AND $d['1'] != '' AND $d['2'] != '' AND $d['3'] != '' AND $d['4'] != '' AND $d['5'] != '' AND $d['5'] != '' AND trim($d['1']) != 'NIS'){
-	            		User::insert(['name' => trim($d['4']), 'email' => trim($d['3']), 'password' => \Hash::make(trim($d['3'])), 'kelas' => $kls, 'jurusan_id' => $jur->id, 'perm_id' => 2, 'activate' => 1]);
-	            	}            		
-            	}
+                if($key > 0){
+                    $jur = Jurusan::firstOrCreate(['name' => $row['4']]);                    
+                    if($row['0'] != '' AND $row['1'] != '' AND $row['2'] != '' AND $row['3'] != '' AND $row['4'] != '' AND $row['5'] != '' AND $row['6'] != ''){
+                        User::insert(['name' => trim($row['2']), 'email' => trim($row['1']), 'password' => \Hash::make(trim($row['1'])), 'kelas' => trim($row['3']), 'jurusan_id' => $jur->id, 'perm_id' => 2, 'activate' => 1]);
+                    }  
+                }
             }
         });
         unlink(public_path('sample/'.$upload));
