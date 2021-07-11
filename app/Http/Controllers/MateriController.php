@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\API\CreateMateriAPIRequest;
 use App\Http\Requests\API\UpdateMateriAPIRequest;
+use App\User;
 use App\Models\Materi;
 use App\Models\Jurusan;
 use App\Models\Post;
@@ -14,6 +15,9 @@ use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+
+use Excel;
+use App\Exports\AbsenMultipleExport;
 
 /**
  * Class MateriController
@@ -70,8 +74,26 @@ class MateriController extends AppBaseController
 
     public function post_report(Request $request)
     {
+        $data = [];
+        $now = \Carbon\Carbon::now()->format('Y-m-d');
         if($request->jenis == 'hadir'){
-            dd('ok');
+            $name = "absen_harian_".time().".xlsx";
+            $uploadDest = '/sample/' . $name;
+
+            $absen = User::where('perm_id', 2)->whereHas('logs', function($query) use($now){
+                return $query->whereDate('created_at', $now);
+            })->get();
+
+            $abs = array_column($absen->toArray(), 'id');
+
+            $no_absen = User::where('perm_id', 2)->whereNotIn('id', $abs)->get();
+
+            $data = array(
+                'Masuk'         => $absen,
+                'Tidak Masuk'   => $no_absen
+            );
+
+            $uploadedFile = Excel::store(new AbsenMultipleExport($data, $request), $uploadDest, 'public_uploads');            
         }        
     }
 

@@ -3,8 +3,6 @@
 namespace App\Exports;
 
 use App\User;
-use App\Models\Classes;
-use App\Helpers\General;
 use Maatwebsite\Excel\Concerns\FromView;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -20,17 +18,14 @@ use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class ClockInOutStudentMultipleAttendanceExport implements WithMultipleSheets
+class AbsenMultipleExport implements WithMultipleSheets
 {
     use Exportable;
     
-    public function __construct($data, $period, $centre, $num_column, Request $request)
+    public function __construct($data, Request $request)
     {
-        $this->data = $data;
-        $this->period = $period;
-        $this->centre = $centre;
-        $this->request = $request;
-        $this->num_column = $num_column;
+        $this->data = $data;        
+        $this->request = $request;        
     }
 
     public function sheets(): array
@@ -38,18 +33,10 @@ class ClockInOutStudentMultipleAttendanceExport implements WithMultipleSheets
         $sheets = [];
         $dta = [];        
         $data = $this->data;
-        $period = $this->period;
-        $centre = $this->centre;
         $request = $this->request;
-        $num_column = $this->num_column;        
 
-        foreach($data as $dt){            
-            $dta[$dt['classes']][] = $dt;
-        }
-
-        ksort($dta);
-
-        foreach($dta as $key => $dx){            
+        foreach($data as $key => $dx){
+            dd($dx);
             $sheets[] = new ClockInOutPerStudentAttendanceExport($dx, $period, $centre, $num_column, $key, $request);
         }
 

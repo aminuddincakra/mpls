@@ -195,7 +195,6 @@ return [
 
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Yajra\Datatables\DatatablesServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
 
         Barryvdh\DomPDF\ServiceProvider::class,
@@ -260,7 +259,6 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
         'Image' => Intervention\Image\Facades\Image::class,
-        'Datatables' => Yajra\Datatables\DatatablesServiceProvider::class,
 
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Embed' => Cohensive\Embed\Facades\Embed::class

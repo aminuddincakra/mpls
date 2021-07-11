@@ -70,5 +70,10 @@ class User extends Authenticatable
     public function sesis()
     {
         return $this->hasMany('App\Models\Sesi');
+    } 
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Log')->orderBy('id', 'ASC');
     }    
 }
