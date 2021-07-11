@@ -65,7 +65,7 @@
                                       {!! Embed::make($dt->embed)->parseUrl()->getIframe() !!}
                                     @endif
                                     @if($dt->file != '' AND file_exists('uploads/'.$dt->file))
-                                        <embed src="{{ asset('uploads/'.$dt->file) }}" width="600" height="500" alt="pdf" />
+                                        <embed src="{{ asset('uploads/'.$dt->file) }}" width="400" height="500" alt="pdf" />
                                         <a href="{{ asset('uploads/'.$dt->file) }}" class="btn btn-primary">Download Materi</a>
                                     @endif
                                     @if($key != intval(count($data)) - 1)

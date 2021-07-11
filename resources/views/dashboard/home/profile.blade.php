@@ -32,7 +32,8 @@
                   </tr>
                   <tr>
                     <td class="tg-0lax" width="200px">Jurusan</td>
-                    <td class="tg-0lax">: {{ \Auth::user()->jurusan }}</td>
+                    @php ($jur = \Auth::user()->jurusane)
+                    <td class="tg-0lax">: {{ ($jur) ? $jur->name : '-' }}</td>
                   </tr>
                   <tr>
                     <td class="tg-0lax" width="200px">Wali Kelas</td>
