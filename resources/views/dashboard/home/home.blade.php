@@ -26,7 +26,7 @@
                             <h4 class="modal-title">{{ $pengumuman->title }}</h4>
                         </div>
                         <div class="modal-body">
-                            {!! $pengumuman->title !!}
+                            {!! $pengumuman->content !!}
                         </div>
                         <div class="modal-footer">
                             <a href="#" class="btn btn-default" data-dismiss="modal">Tutup</a>
@@ -39,7 +39,7 @@
                   <div class="box">
                     @if($materi)
                       <div class="box-header with-border">
-                        <h3 class="box-title">Review Materi</h3>
+                        <h3 class="box-title">Materi MPLS SMK Negeri 1 Rembang</h3>
                       </div>
                       <div class="box-body">
                           @php ($name = array_column($data->toArray(), 'name'))
