@@ -104,7 +104,7 @@ class MateriController extends AppBaseController
             $materi = Materi::whereDate('date', \Carbon\Carbon::now()->format('Y-m-d'))->first();
 
             if(!$materi){
-                flash('Halaman tidak ditemukan','warning');
+                flash('Tidak ada materi MPLS untuk hari ini','warning');
                 return redirect('dashboard/report');
             }
 
