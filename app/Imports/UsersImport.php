@@ -24,7 +24,7 @@ class UsersImport implements ToModel
                 ['name' => trim($row['2']), 'password' => \Hash::make(trim($row['1'])), 'kelas' => trim($row['3']), 'jurusan_id' => $jur->id, 'perm_id' => 2, 'activate' => 1, 'wali_kelas' => trim($row['5']), 'link' => trim($row['6']), 'asal_sekolah' => trim($row['7'])]
             );*/
 
-            return User::where('email', trim($row['1']))->update(['asal_sekolah' => trim($row['7'])]);
+            User::where('email', trim($row['1']))->update(['asal_sekolah' => trim($row['7'])]);
           }  
         }
     }
