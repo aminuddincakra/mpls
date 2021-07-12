@@ -16,16 +16,20 @@
     <thead>
         <tr>
             <th>No.</th>
+            <th>NIS</th>
             <th>Nama</th>
-            <th>Kelas</th>            
+            <th>Kelas</th>
+            <th>Asal Sekolah</th>
         </tr>        
     </thead>
     <tbody>
         @foreach($data as $kk => $dt)            
             <tr>
                 <td>{{ $kk + 1 }}</td>
+                <td>{{ $dt->email }}</td>
                 <td>{{ $dt->name }}</td>
                 <td>{{ $dt->kelas }}</td>
+                <td>{{ $dt->asal_sekolah }}</td>
             </tr>            
         @endforeach
     </tbody>

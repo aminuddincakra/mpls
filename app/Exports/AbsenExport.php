@@ -37,7 +37,7 @@ class AbsenExport implements FromView, ShouldAutoSize, WithColumnWidths, WithSty
         return [
             AfterSheet::class => function(AfterSheet $event) use($maks, $start) {
                 $event->sheet->styleCells(
-                    'A'.$start.':C'.$maks,
+                    'A'.$start.':E'.$maks,
                     [
                         'borders' => [
                             'allBorders' => [
@@ -65,7 +65,9 @@ class AbsenExport implements FromView, ShouldAutoSize, WithColumnWidths, WithSty
     {
         return [
             'A' => 5,
-            'B' => 30,
+            'B' => 15,
+            'C' => 30,
+            'E' => 30,
         ];
     }
 

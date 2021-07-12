@@ -7,7 +7,9 @@ use App\User;
 use App\Models\Jurusan;
 use Response;
 use Validator;
+
 use Excel;
+use App\Imports\UsersImport;
 
 class SiswaController extends Controller
 {
@@ -47,20 +49,25 @@ class SiswaController extends Controller
             $upload = $name;
         }
         
-        Excel::load(public_path('sample/'.$upload), function($reader) use($request) {
+        Excel::import(new UsersImport, public_path('sample/'.$upload));
+        /*Excel::load(public_path('sample/'.$upload), function($reader) use($request) {
             $reader->noHeading();
             $results = $reader->all();
             $jur = null;
             $kls = null;
             foreach($results as $key => $row){
                 if($key > 0){
+                    dd($row);
                     $jur = Jurusan::firstOrCreate(['name' => $row['4']]);                    
                     if($row['0'] != '' AND $row['1'] != '' AND $row['2'] != '' AND $row['3'] != '' AND $row['4'] != '' AND $row['5'] != '' AND $row['6'] != ''){
-                        User::insert(['name' => trim($row['2']), 'email' => trim($row['1']), 'password' => \Hash::make(trim($row['1'])), 'kelas' => trim($row['3']), 'jurusan_id' => $jur->id, 'perm_id' => 2, 'activate' => 1, 'wali_kelas' => trim($row['5']), 'link' => trim($row['6'])]);
+                        User::updateOrCreate(
+                            ['name' => trim($row['2']), 'password' => \Hash::make(trim($row['1'])), 'kelas' => trim($row['3']), 'jurusan_id' => $jur->id, 'perm_id' => 2, 'activate' => 1, 'wali_kelas' => trim($row['5']), 'link' => trim($row['6']), 'asal_sekolah' => trim($row['7'])],
+                            ['email' => trim($row['1'])]
+                        );
                     }  
                 }
             }
-        });
+        });*/
         unlink(public_path('sample/'.$upload));
 
         flash('Selamat, import soal berhasil','success');

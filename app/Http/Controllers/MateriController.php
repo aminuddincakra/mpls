@@ -76,7 +76,7 @@ class MateriController extends AppBaseController
     public function post_report(Request $request)
     {
         $data = [];
-        $now = \Carbon\Carbon::now()->format('Y-m-d');
+        $now = \Carbon\Carbon::parse($request->tanggal)->format('Y-m-d');
         if($request->jenis == 'hadir'){
             $name = "absen_harian_".time().".xlsx";
             $uploadDest = '/sample/' . $name;

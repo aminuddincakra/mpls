@@ -31,7 +31,23 @@
                                                 <option value="aktivitas">Laporan Aktivitas Peserta Didik</option>
                                             </select>
                                         </div>
-                                    </div>                                    
+                                    </div>
+                                    <div class="form-group {{ $errors->has('date') ? ' has-error' : '' }}">
+                                        <label class="col-md-12">Tanggal</label>
+                                        <div class="col-md-12">
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right datepicker" name="tanggal" value="{{ \Carbon\Carbon::now()->format('m/d/Y') }}">
+                                            </div>
+                                            @if ($errors->has('date'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('date') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">                                            
                                             <button type="submit" class="btn btn-success">Generate Laporan</button>
