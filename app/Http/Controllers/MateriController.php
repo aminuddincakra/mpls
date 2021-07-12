@@ -101,7 +101,7 @@ class MateriController extends AppBaseController
             $name = "rekap_keaktifan_".time().".xlsx";
             $uploadDest = '/sample/' . $name;
 
-            $materi = Materi::whereDate('date', \Carbon\Carbon::now()->format('Y-m-d'))->first();
+            $materi = Materi::whereDate('date', $now)->first();
 
             if(!$materi){
                 flash('Tidak ada materi MPLS untuk hari ini','warning');
