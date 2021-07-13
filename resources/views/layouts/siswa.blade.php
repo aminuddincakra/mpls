@@ -104,7 +104,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li {!! ($routes == 'home') ? 'class="active"' : '' !!}><a href="{{ url('dashboard') }}">Dashboard</a></li>
+            <li {!! ($routes == 'home') ? 'class="active"' : '' !!}><a href="{{ url('dashboard') }}">{{ \Auth::user()->name }}</a></li>
             <li {!! ($routes == 'profile') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/profile') }}">Profile</a></li>
             <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
           </ul>   
