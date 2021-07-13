@@ -43,6 +43,7 @@ Route::prefix('dashboard')->group(function () {
 	Route::get('materi/{id?}', 'DashboardController@materi')->name('materi');
 	Route::post('siswa/import', 'SiswaController@import');
 	Route::post('siswa/kelas', 'SiswaController@kelas');
+	Route::get('materi-pertama', 'DashboardController@materi_satu')->name('materi-pertama');
 
 	Route::get('klear', function(){
 		\Artisan::call('view:clear');

@@ -4,7 +4,7 @@
     <div class="container">
       <section class="content-header">
         <h1>
-          Dashboard          
+          {{ \Auth::user()->name }}          
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{ url('dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>          

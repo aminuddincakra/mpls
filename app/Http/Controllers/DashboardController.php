@@ -42,6 +42,27 @@ class DashboardController extends Controller
         }
     }
 
+    public function materi_satu()
+    {
+        $pengumuman = Pengumuman::where('status', 1)->orderBy('id', 'ASC')->first();
+        $materi = Materi::findOrFail(2);
+        $data = [];
+        if($materi){
+            $jur = \Auth::user()->jurusan_id;
+            $data = Post::where('materi_id', $materi->id)->where(function($query) use($jur){
+                return $query->whereNull('jurusan_id')->orWhere('jurusan_id', $jur);
+            })->get();                
+        }
+
+        $mbuh = (is_array($data)) ? $data : $data->toArray();
+        $materi = array_column($mbuh, 'id');
+        if(array_key_exists(0, $materi)){
+            Activity::firstOrCreate(['user_id' => \Auth::user()->id, 'post_id' => $materi['0']]);
+        }
+
+        return view('dashboard.home.home')->with('pengumuman', $pengumuman)->with('materi', $materi)->with('data', $data);
+    }
+
     public function profile()
     {
         return view('dashboard.home.profile');

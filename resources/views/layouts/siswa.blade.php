@@ -105,6 +105,10 @@
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li {!! ($routes == 'home') ? 'class="active"' : '' !!}><a href="{{ url('dashboard') }}">{{ \Auth::user()->name }}</a></li>
+            @php ($nis = ['15696', '15699', '15701', '15712', '15731', '15733', '15760', '15864', '15963', '15976', '16061', '16073', '16078', '16090', '16099', '16114', '16184'])
+            @if(in_array(\Auth::user()->email, $nis))
+              <li {!! ($routes == 'materi-pertama') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/materi-pertama') }}">Materi 1</a></li>
+            @endif
             <li {!! ($routes == 'profile') ? 'class="active"' : '' !!}><a href="{{ url('dashboard/profile') }}">Profile</a></li>
             <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
           </ul>   
